@@ -22,6 +22,7 @@ package au.espressolearning.javaapp.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +38,9 @@ public class HomeFragment extends Fragment {
         return fragment;
     }
 
+    private String username;
+    private static final String Tag = "Test";
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
@@ -44,6 +48,11 @@ public class HomeFragment extends Fragment {
         // Set title bar
         ((MainActivity) getActivity())
                 .setActionBarTitle(getResources().getString(R.string.title_home));
+
+        Log.d(Tag,"username is " + getArguments());
+        if(getArguments() != null){
+            username = getArguments().getString("namefromMain");
+        }
     }
 
     @Override
@@ -51,8 +60,10 @@ public class HomeFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
 
         TextView userName = (TextView)rootView.findViewById(R.id.subtitle_text);
+        /*
         String currentUser = getActivity().getIntent().getStringExtra("name");
-        userName.setText(currentUser);
+        */
+        userName.setText(username);
         return rootView;
     }
 

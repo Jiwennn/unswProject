@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -26,53 +27,42 @@ public class MainActivity extends AppCompatActivity {
     private TextView mTextMessage;
     private AHBottomNavigation bottomNavigation;
 
+    private static final String Tag = "Test";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        String username = "";
         //top action bar
         Toolbar myToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(myToolbar);
 
+        if (getIntent().hasExtra("name")) {
+            username = getIntent().getStringExtra("name");
+        }
 
+        Log.d(Tag,"username is " + username);
         //bottom navigation
         mTextMessage = (TextView) findViewById(R.id.message);
         //BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         bottomNavigation = (AHBottomNavigation) findViewById(R.id.navigation);
-        /*
-        navigation.setOnNavigationItemSelectedListener
-                (new BottomNavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                        Fragment selectedFragment = null;
-                        switch (item.getItemId()) {
-                            case R.id.homeTab:
-                                selectedFragment = HomeFragment.newInstance();
-                                break;
-                            case R.id.courseTab:
-                                selectedFragment = CourseFragment.newInstance();
-                                break;
-                            case R.id.quizTab:
-                                selectedFragment = QuizFragment.newInstance();
-                                break;
-                            case R.id.profileTab:
-                                selectedFragment = ProfileFragment.newInstance();
-                                break;
-                        }
-                        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                        transaction.replace(R.id.containerID, selectedFragment);
-                        transaction.commit();
-                        return true;
-                    }
-                });
-*/
+
         this.setupBottomNavigation();
+
+
+        Bundle bundle = new Bundle();
+        bundle.putString("namefromMain", username);
+        // set Fragmentclass Arguments
+        HomeFragment frag = new HomeFragment();
+        frag.setArguments(bundle);
 
         //Manually displaying the first fragment - one time only
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.containerID, HomeFragment.newInstance());
         transaction.commit();
+
     }
 
     private void setupBottomNavigation()
