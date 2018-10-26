@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">Java Espresso</string>
+    <string name="title_home">Home</string>
+    <string name="title_course">Course</string>
+    <string name="title_bar_course">All Courses</string>
+    <string name="title_quiz">Quiz</string>
+    <string name="title_bar_quiz">All Quizzes</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_bar_profile">My Profile</string>
+    <string name="fragmentName">Fragment Name</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="action_register">No account yet? Register here</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email completions." </string>
+
+    <string name="title_activity_main">MainActivity</string>
+
+    <!--Add NewUserActivity -->
+    <string name="hint_word">User...</string>
+    <string name="button_save">Save</string>
+    <string name="empty_not_saved">User not saved because it is empty.</string>
+
+    <!--QuizActivity-->
+    <string name ="correct_Toast">Correct!</string>
+    <string name ="inCorrect_Toast">Incorrect!</string>
+    <string name ="T1_Q1">Select Option 1 if the output is Base::show() called? \nSelect Option 2 if the output is Derived::show() called?</string>
+    <string name ="T1_Q2">Select Option 1 if there is a compiler error. \nSelect Option 2 if there is a runtime error</string>
+    <string name ="T1_Q3">Select Option 1 if the output is Base::show() called? \nSelect Option 2 if the output is Derived::show() called?"</string>
+    <string name ="T2_Q1"></string>
+    <string name ="T2_Q2"></string>
+    <string name ="T2_Q3"></string>
+    <string name ="T3_Q1"></string>
+    <string name ="T3_Q2"></string>
+    <string name ="T3_Q3"></string>
+    <string name ="T4_Q1"></string>
+    <string name ="T4_Q2"></string>
+    <string name ="T4_Q3"></string>
+    <string name ="T5_Q1"></string>
+    <string name ="T5_Q2"></string>
+    <string name ="T5_Q3"></string>
+    <string name ="T6_Q1"></string>
+    <string name ="T6_Q2"></string>
+    <string name ="T6_Q3"></string>
+</resources>

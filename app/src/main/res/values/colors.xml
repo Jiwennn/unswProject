@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ffde03</color>
+    <color name="colorPrimaryDark">#c7ad00</color>
+    <color name="colorPrimaryLight">#ffff54</color>
+    <color name="colorSecondary">#0336ff</color>
+    <color name="colorSecondaryDark">#0008ca</color>
+    <color name="colorSecondaryLight">#6f63ff</color>
+    <color name="colorTenary">#ff0266</color>
+    <color name="colorTernaryDark">#c5003c</color>
+    <color name="colorTenaryLight">#ff5c93</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="white">#FFFFFF</color>
+    <color name="white_trans">#99FFFFFF</color>
+
+    <color name="primary">#fdfdfd</color>
+    <color name="primary_dark">#e43f3f</color>
+    <color name="primary_darker">#e43f3f</color>
+    <color name="accent">#FFFFFF</color>
+
+    <color name="black">#000000</color>
+    <color name="jet">#222222</color>
+    <color name="oil">#333333</color>
+    <color name="monsoon">#777777</color>
+    <color name="jumbo">#888888</color>
+    <color name="aluminum">#999999</color>
+    <color name="base">#AAAAAA</color>
+    <color name="iron">#CCCCCC</color>
+</resources>
