@@ -12,6 +12,7 @@ public class Quiz {
         this.quizImage = quizImage;
         this.quizQn = quizQn;
         this.answer = answer;
+
     }
 
     public Quiz(String quizID, String quizImage, String quizQn, Boolean answer) {

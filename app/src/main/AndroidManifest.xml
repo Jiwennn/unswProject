@@ -37,7 +37,6 @@
         <activity
             android:name=".activities.RegisterActivity"
             android:theme="@style/AppTheme.Dark" />
-        <activity android:name=".activities.UserAreaActivity" />
     </application>
 
 </manifest>
