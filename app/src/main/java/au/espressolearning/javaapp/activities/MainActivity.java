@@ -1,5 +1,6 @@
 package au.espressolearning.javaapp.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -127,6 +128,21 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.toolbar, menu);
+
+
+        MenuItem logoutOption = menu.findItem(R.id.logoutOption);
+
+        logoutOption.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+
+                Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+                startActivity(intent);
+                return false;
+            }
+        });
+
+
         return true;
     }
 
