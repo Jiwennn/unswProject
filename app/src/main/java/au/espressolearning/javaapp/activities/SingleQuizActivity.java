@@ -115,8 +115,10 @@ public class SingleQuizActivity extends AppCompatActivity {
 
         });
 
-       /* mPrevButton = findViewById(R.id.prevBtn);
+       mPrevButton = findViewById(R.id.prevBtn);
+        mPrevButton.setVisibility(View.GONE);
 
+/*
         mPrevButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
