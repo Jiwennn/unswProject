@@ -1,15 +1,10 @@
 package au.espressolearning.javaapp.activities;
 
-import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,15 +13,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.youtube.player.YouTubePlayerSupportFragment;
-
 import java.io.IOException;
 import java.io.InputStream;
 
-import au.espressolearning.javaapp.Course;
 import au.espressolearning.javaapp.Quiz;
 import au.espressolearning.javaapp.R;
-import au.espressolearning.javaapp.fragments.QuizFragment;
 
 public class SingleQuizActivity extends AppCompatActivity {
 
@@ -38,6 +29,7 @@ public class SingleQuizActivity extends AppCompatActivity {
     private Button mFalseButton;
 
     private Button mNextButton;
+    private Button mPrevButton;
 
     private static Quiz[][] quiz = {{
             new Quiz("1-1", "1-1.png", "Select Option 1 if the output is Base::show() called? \nSelect Option 2 if the output is Derived::show() called?", false, "Topic 1 : Overview"),
@@ -60,10 +52,11 @@ public class SingleQuizActivity extends AppCompatActivity {
             new Quiz("5-2", "5-2.png", "Select Option 1 if the output is 0 0. \nSelect Option 2 if the output is a compiler error", false, "Topic 5 : Arrays"),
             new Quiz("5-3", "5-3.png", "Select Option 1 if the output is 9\n7 8\n4 5 6\n0 1 2 3 . \nSelect Option 2 if the output is 0\n1 2\n3 4 5\n6 7 8 9 ", false, "Topic 5 : Arrays")
     }, {
-            new Quiz("6-1", "5-1.png", "Select Option 1 if the output is 20. \nSelect Option 2 if the output is compiler error", false, "Topic 6 : Inner Classes"),
-            new Quiz("5-2", "5-2.png", "Select Option 1 if the output is 0 0. \nSelect Option 2 if the output is a compiler error", false, "Topic 6 : Inner Classes"),
-            new Quiz("5-2", "5-2.png", "Select Option 1 if the output is 0 0. \nSelect Option 2 if the output is a compiler error", false, "Topic 6 : Inner Classes")
+            new Quiz("6-1", "6-1.png", "Select Option 1 if the output is 20. \nSelect Option 2 if the output is compiler error", false, "Topic 6 : Inner Classes"),
+            new Quiz("6-2", "6-2.png", "Select Option 1 if the output is 0 0. \nSelect Option 2 if the output is a compiler error", false, "Topic 6 : Inner Classes"),
+            new Quiz("6-2", "6-2.png", "Select Option 1 if the output is 0 0. \nSelect Option 2 if the output is a compiler error", false, "Topic 6 : Inner Classes")
     }};
+
 
 
     private int mCurrentIndex = 0;
@@ -82,6 +75,7 @@ public class SingleQuizActivity extends AppCompatActivity {
         quizText = (TextView) findViewById(R.id.quiz_label);
         quizQn = (TextView) findViewById(R.id.quiz_qn);
         qnImg = (ImageView) findViewById(R.id.imageView3);
+
 
         mTrueButton = findViewById(R.id.true_1);
         mTrueButton.setOnClickListener(new View.OnClickListener() {
@@ -107,20 +101,37 @@ public class SingleQuizActivity extends AppCompatActivity {
 
         mNextButton = findViewById(R.id.next);
 
-        /*
-        if (count == (quiz[0].length - 1)) {
-            mNextButton.setVisibility(View.GONE);
-        }
-*/
         mNextButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                    mCurrentIndex = (mCurrentIndex + 1) % quiz.length;
-                    nextQuestion();
-                    count++;
+                mCurrentIndex = (mCurrentIndex + 1) % quiz.length;
+                nextQuestion();
+                count++;
+                if (count == (quiz[0].length - 1)) {
+                    mNextButton.setVisibility(View.GONE);
+                }
             }
+
         });
+
+       /* mPrevButton = findViewById(R.id.prevBtn);
+
+        mPrevButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                mCurrentIndex = (mCurrentIndex - 1) % quiz.length;
+                prevQuestion();
+                count--;
+                if (count == 0) {
+                    mPrevButton.setVisibility(View.GONE);
+                }
+            }
+
+        });
+
+*/
 
 
     }
@@ -202,10 +213,19 @@ public class SingleQuizActivity extends AppCompatActivity {
         quizQn.setText(quiz_Qn);
         qnImg.setImageBitmap(getBitmapFromAssets(quizUrl));
 
-
-
     }
 
+    /*private void prevQuestion(){
+        //get topic id from QuizAdaper
+        int t_id = Integer.parseInt(getIntent().getExtras().get("topic_id").toString()) - 1;
+
+        String quizNumber = quiz[t_id][mCurrentIndex].getQuizID();
+        String quizUrl = quiz[t_id][mCurrentIndex].getQuizImage();
+        String quiz_Qn = quiz[t_id][mCurrentIndex].getQuizQn();
+        quizText.setText("Question " + quizNumber);
+        quizQn.setText(quiz_Qn);
+        qnImg.setImageBitmap(getBitmapFromAssets(quizUrl));
+    }*/
     //check if the user input's answer is right or wrong
     private void checkAnswer(boolean userPressedTrue) {
         String quizAns = getIntent().getStringExtra("quiz_ans");
