@@ -2,8 +2,6 @@ package au.espressolearning.javaapp.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -15,7 +13,6 @@ import android.widget.TextView;
 
 import au.espressolearning.javaapp.fragments.CourseFragment;
 import au.espressolearning.javaapp.fragments.HomeFragment;
-import au.espressolearning.javaapp.fragments.ProfileFragment;
 import au.espressolearning.javaapp.fragments.QuizFragment;
 import au.espressolearning.javaapp.R;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
@@ -72,13 +69,13 @@ public class MainActivity extends AppCompatActivity {
         AHBottomNavigationItem homeItem=new AHBottomNavigationItem(R.string.title_home, R.drawable.ic_home_black_24dp, R.color.white);
         AHBottomNavigationItem courseItem=new AHBottomNavigationItem(R.string.title_course, R.drawable.ic_library_books_black_24dp, R.color.white);
         AHBottomNavigationItem quizItem=new AHBottomNavigationItem(R.string.title_quiz, R.drawable.ic_assessment_black_24dp, R.color.white);
-        AHBottomNavigationItem profileItem=new AHBottomNavigationItem(R.string.title_profile, R.drawable.ic_notifications_black_24dp, R.color.white);
+        //AHBottomNavigationItem profileItem=new AHBottomNavigationItem(R.string.title_profile, R.drawable.ic_notifications_black_24dp, R.color.white);
 
         //ADD PROPERTIES
         bottomNavigation.addItem(homeItem);
         bottomNavigation.addItem(courseItem);
         bottomNavigation.addItem(quizItem);
-        bottomNavigation.addItem(profileItem);
+        //bottomNavigation.addItem(profileItem);
 
         //SET PROPERTIES
         bottomNavigation.setCurrentItem(0);
@@ -105,9 +102,6 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 2:
                         selectedFragment = QuizFragment.newInstance();
-                        break;
-                    case 3:
-                        selectedFragment = ProfileFragment.newInstance();
                         break;
                 }
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
