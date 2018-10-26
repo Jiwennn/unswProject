@@ -33,13 +33,15 @@ public class LoginActivity extends AppCompatActivity {
     private TextView _signupLink;
 
     private UserDAO userDao;
-    private UserViewModel mUserViewModel;
+    private UserRoomDatabase db;
+
+    private static final String Tag = "Test";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        db = UserRoomDatabase.getInstance(this);
 
         _emailText = findViewById(R.id.input_email);
         _passwordText = findViewById(R.id.input_password);
@@ -64,7 +66,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        mUserViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
     }
 
     public void login() {
@@ -152,13 +153,19 @@ public class LoginActivity extends AppCompatActivity {
         }
 
 
+        userDao = db.UserDao();
+        Log.d(Tag,"Test 1111");
 
-        //userDao = UserRoomDatabase.getInstance(this).UserDao();
-        //room database retrieval
-        //User user = userDao.findbyEmail(email);
-        List<User> users = mUserViewModel.getAllUsers().getValue();
+
+        if(userDao == null){
+            Log.d(Tag,"userDao null");
+        }else{
+            Log.d(Tag,"userDao not null");
+        }
+
+        List<User> users = (List<User>) userDao.getAllUsers();
         User user = null;
-        /*
+
 
         for(int i = 0; i < users.size(); i++){
             if(users.get(i).getEmail().equals(email)){
@@ -169,9 +176,27 @@ public class LoginActivity extends AppCompatActivity {
 
         if(user == null){
             Toast.makeText(this, "LOGIN FAILED", Toast.LENGTH_SHORT).show();
+            //create and initialize an intent
+            Intent intent = new Intent(LoginActivity.this, LoginActivity.class);
+            startActivity(intent);
         }else{
+
             Toast.makeText(this, "Login is successful, hi " + user.getUsername(), Toast.LENGTH_SHORT).show();
-        }*/
+
+            //create and initialize an intent
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+
+            //Create a Bundle Object
+            Bundle extras = new Bundle();
+
+            //Add key value pairs to this bundle
+            extras.putString("name",user.getUsername());
+            extras.putString("email",user.getEmail());
+            extras.putString("password",user.getPwd());
+            intent.putExtras(extras);
+
+            startActivity(intent);
+        }
 
 
         return valid;

@@ -42,6 +42,7 @@ public abstract class UserRoomDatabase extends RoomDatabase {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                             UserRoomDatabase.class, "User_database")
                             //.addCallback(sRoomDatabaseCallback) // add the callback to the database build sequence right before calling .build().
+                            .allowMainThreadQueries()
                             .build();
                 }
             }
@@ -80,7 +81,7 @@ public abstract class UserRoomDatabase extends RoomDatabase {
         protected Void doInBackground(final Void... params) {
             mDao.deleteAll();
             User user = new User("Lina","llzeom@gmail.com","012345");
-             mDao.insertUser(user);
+            mDao.insertUser(user);
             user = new User("Jiwen","jiwen@gmail.com","012345");
             mDao.insertUser(user);
             return null;

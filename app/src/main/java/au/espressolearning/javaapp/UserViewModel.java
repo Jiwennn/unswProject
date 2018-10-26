@@ -4,6 +4,7 @@ import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
 
+import au.espressolearning.javaapp.database.UserRoomDatabase;
 import au.espressolearning.javaapp.model.User;
 
 import java.util.List;
@@ -17,7 +18,8 @@ public class UserViewModel extends AndroidViewModel {
     private UserRepository mRepository;
 
     //Add a private LiveData member variable to cache the list of users.
-    private LiveData<List<User>> mAllUsers;
+    //private LiveData<List<User>> mAllUsers;
+    List<User> mAllUsers;
 
     private LiveData<User> mUser;
 
@@ -29,7 +31,15 @@ public class UserViewModel extends AndroidViewModel {
     }
 
     //Add a "getter" method for all the users. This completely hides the implementation from the UI.
-    public LiveData<List<User>> getAllUsers() { return mAllUsers; }
+    /*
+    public LiveData<List<User>> getAllUsers() {
+        return mAllUsers;
+    }*/
+
+    List<User> getAllUsers() {
+        return mAllUsers;
+    }
+
 
 
     //Create a wrapper insert() method that calls the Repository's insert() method.

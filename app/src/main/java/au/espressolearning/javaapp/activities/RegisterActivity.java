@@ -17,6 +17,7 @@ import android.widget.Toast;
 import au.espressolearning.javaapp.R;
 import au.espressolearning.javaapp.UserRepository;
 import au.espressolearning.javaapp.helper.InputValidation;
+import au.espressolearning.javaapp.model.User;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -58,6 +59,9 @@ public class RegisterActivity extends AppCompatActivity {
                     String username = r_name.getText().toString();
                     String email = r_email.getText().toString();
                     String pwd = r_pwd.getText().toString();
+
+                    //insert into database
+                    userRepository.insert(new User(email, username, pwd));
 
                     //Create a Bundle Object
                     Bundle extras = new Bundle();
@@ -132,7 +136,6 @@ public class RegisterActivity extends AppCompatActivity {
         } else {
             r_confirmPWD.setError(null);
         }
-
         return valid;
     }
 }

@@ -44,7 +44,8 @@ public interface UserDAO {
 
 
     @Query("SELECT * from user_table ORDER BY created_at desc")
-    LiveData<List<User>> getAllUsers();
+    List<User> getAllUsers();
+    //LiveData<List<User>> getAllUsers();
 
 
     //Declare a method to delete all the user using @Query

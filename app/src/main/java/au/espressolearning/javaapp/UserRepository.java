@@ -17,7 +17,8 @@ import java.util.List;
 public class UserRepository {
     //Add member variables for the DAO and the list of User
     private UserDAO mUserDao;
-    private LiveData<List<User>> mAllUsers;
+    //private LiveData<List<User>> mAllUsers;
+    List<User> mAllUsers;
     private LiveData<User> mUser;
 
     private UserRoomDatabase db;
@@ -33,7 +34,10 @@ public class UserRepository {
 
     //Add a wrapper for getAllUsers(). Room executes all queries on a separate thread.
     //Observed LiveData will notify the observer when the data has changed.
-    LiveData<List<User>> getAllUsers() {
+    /*LiveData<List<User>> getAllUsers() {
+        return mAllUsers;
+    }*/
+    List<User> getAllUsers() {
         return mAllUsers;
     }
 
