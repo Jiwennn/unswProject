@@ -49,10 +49,6 @@ public class HomeFragment extends Fragment {
         ((MainActivity) getActivity())
                 .setActionBarTitle(getResources().getString(R.string.title_home));
 
-        Log.d(Tag,"username is " + getArguments());
-        if(getArguments() != null){
-            username = getArguments().getString("namefromMain");
-        }
     }
 
     @Override
@@ -60,10 +56,10 @@ public class HomeFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
 
         TextView userName = (TextView)rootView.findViewById(R.id.subtitle_text);
-        /*
+
         String currentUser = getActivity().getIntent().getStringExtra("name");
-        */
-        userName.setText(username);
+
+        userName.setText(currentUser);
         return rootView;
     }
 
